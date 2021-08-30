@@ -1,4 +1,4 @@
-# app_finances
+# Controle de Finanças
 Aplicativo para controle de finanças em React Native/Typescript
 
 ##Project built in expo
