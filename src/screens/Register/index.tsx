@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Modal, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native';
 
 import * as Yup from 'yup';
@@ -31,6 +31,10 @@ interface FormData {
   amount: string;
 }
 
+interface NavigationProps {
+  navigate: (screen: string) => void;
+}
+
 const schema = Yup.object().shape({
   name: Yup.string().required('Nome é obrigatório'),
   amount: Yup.number()
@@ -50,7 +54,7 @@ export function Register() {
     name: 'Categoria',
   });
 
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProps>();
 
   const {
     control,
@@ -65,12 +69,12 @@ export function Register() {
     setTransactionType(type);
   }
 
-  function handleCloseSelectCategoryModal() {
-    setCategoryModalOpen(false);
-  }
-
   function handleOpenSelectCategoryModal() {
     setCategoryModalOpen(true);
+  }
+
+  function handleCloseSelectCategoryModal() {
+    setCategoryModalOpen(false);
   }
 
   async function handleRegister(form: FormData) {
@@ -154,6 +158,7 @@ export function Register() {
             </TransactionsTypes>
 
             <CategorySelectButton
+              testID="button-category"
               title={category.name}
               onPress={handleOpenSelectCategoryModal}
             />
@@ -161,7 +166,7 @@ export function Register() {
           <Button title="Enviar" onPress={handleSubmit(handleRegister)} />
         </Form>
 
-        <Modal visible={categoryModalOpen}>
+        <Modal testID="modal-category" visible={categoryModalOpen}>
           <CategorySelect
             category={category}
             setCategory={setCategory}

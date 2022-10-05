@@ -5,8 +5,10 @@ import React, {
   useEffect,
   useState,
 } from 'react';
+
 import * as Google from 'expo-google-app-auth';
 import * as AppleAuthentication from 'expo-apple-authentication';
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface AuthProviderProps {
@@ -40,9 +42,9 @@ function AuthProvider({ children }: AuthProviderProps) {
     try {
       const result = await Google.logInAsync({
         iosClientId:
-          '374161668184-suoi2kune1qcqh95lbfiicdq5o3lvgmr.apps.googleusercontent.com',
+          '797746893862-7q7kki8g4a0r1g33ml4mei1lg7bdpsv3.apps.googleusercontent.com',
         androidClientId:
-          '374161668184-71rciptg38r06bmr602u3retdemvbgqi.apps.googleusercontent.com',
+          '797746893862-nnmfjm08n9usosvq7gj7pickk7uosnic.apps.googleusercontent.com',
         scopes: ['profile', 'email'],
       });
 

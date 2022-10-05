@@ -18,13 +18,10 @@ describe('Auth Hook', () => {
 
     await act(() => result.current.signInWithGoogle());
 
-    console.log('Primeiro');
-    console.log(result.current);
-
     expect(result.current.user).not.toHaveProperty('id');
   });
 
-  it('should be able to sign in width Google account existing', async () => {
+  it('should be able to sign-in with Google account existing', async () => {
     const googleMocked = mocked(logInAsync as any);
     googleMocked.mockReturnValueOnce({
       type: 'success',
@@ -41,9 +38,6 @@ describe('Auth Hook', () => {
     });
 
     await act(() => result.current.signInWithGoogle());
-
-    console.log('Segundoo');
-    console.log(result.current.user);
 
     expect(result.current.user.email).toBe('any@any.com');
   });
